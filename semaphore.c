@@ -5,12 +5,12 @@
 #include <sys/sem.h>
 #include <string.h>
 
-/*union semun{
+union semun{
   int val;
   struct semi_ds *buf;
   unsigned short  *array;
   struct seminfo  *__buf;
-};*/
+};
 
 int main(int argc, char *argv[]){
         int semid;
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
         int sc;
         if (strncmp(argv[1], "-c", strlen(argv[1])) == 0){
           semid = semget(key, 1, IPC_CREAT | 0644);
-          printf("semaphore createdL %d\n", semid);
+          printf("semaphore created! %d\n", semid);
           union semun su;
           su.val = 1;
         //setting semaphore value
