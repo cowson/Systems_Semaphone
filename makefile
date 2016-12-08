@@ -1,7 +1,5 @@
 compile:
-	gcc semaphore.c
-run: a.out
-	-./a.out
+	gcc control.c -o control
 clean:
-	rm a.out
+	rm control
 	rm -f *~
