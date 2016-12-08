@@ -13,10 +13,13 @@ union semun{
 };
 
 int main(int argc, char *argv[]){
+        char command[100];
+        fgets(command, sizeof(command), stdin);
         int semid;
         int key = ftok("makefile" , 22);
         int sc;
-        if (strncmp(argv[1], "-c", strlen(argv[1])) == 0){
+        //if (strncmp(argv[1], "-c", strlen(argv[1])) == 0){
+        if (command[1] == "-c"){
           semid = semget(key, 1, IPC_CREAT | 0644);
           printf("semaphore created! %d\n", semid);
           union semun su;
