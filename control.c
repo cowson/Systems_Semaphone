@@ -5,21 +5,19 @@
 #include <sys/sem.h>
 #include <string.h>
 
-union semun{
+/*union semun{
   int val;
   struct semi_ds *buf;
   unsigned short  *array;
   struct seminfo  *__buf;
 };
+*/
 
 int main(int argc, char *argv[]){
-        char command[100];
-        fgets(command, sizeof(command), stdin);
         int semid;
         int key = ftok("makefile" , 22);
         int sc;
-        //if (strncmp(argv[1], "-c", strlen(argv[1])) == 0){
-        if (command[1] == "-c"){
+        if (strncmp(argv[1], "-c", strlen(argv[1])) == 0){
           semid = semget(key, 1, IPC_CREAT | 0644);
           printf("semaphore created! %d\n", semid);
           union semun su;
