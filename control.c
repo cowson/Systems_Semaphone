@@ -5,18 +5,20 @@
 #include <sys/sem.h>
 #include <string.h>
 
-union semun{
+/*union semun{
   int val;
   struct semi_ds *buf;
   unsigned short  *array;
   struct seminfo  *__buf;
 };
+*/
 
 
 int main(int argc, char *argv[]){
         int semid;
         int key = ftok("makefile" , 22);
         int sc;
+        FILE *fptr;
         if (strncmp(argv[1], "-c", strlen(argv[1])) == 0){
           semid = semget(key, 1, IPC_CREAT | 0644);
           printf("semaphore created! %d\n", semid);
@@ -25,6 +27,7 @@ int main(int argc, char *argv[]){
         //setting semaphore value
           sc = semctl(semid, 0, SETVAL, su);
           printf("value set: %d\n", sc);
+          FILE *fopen("test.txt", "a+");
         }
         else if (strncmp(argv[1], "-v", strlen(argv[1])) == 0){
           semid = semget(key, 1, 0);
