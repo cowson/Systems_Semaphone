@@ -1,14 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
 #include <sys/sem.h>
 #include <string.h>
 #include <fcntl.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include <sys/types.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 
@@ -36,7 +33,7 @@ int main(int argc, char *argv[]){
           sc = semctl(semid, 0, SETVAL, su);
           //printf("value set: %d\n", sc);
           int file = open("file.txt", O_CREAT | O_TRUNC, 0644);
-          shmdt(0);
+          //shmdt(0);
           close(file);
         }
         else if (strncmp(argv[1], "-v", strlen(argv[1])) == 0){
