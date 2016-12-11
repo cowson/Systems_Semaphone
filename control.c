@@ -24,6 +24,11 @@ int main(int argc, char *argv[]){
         int sc;
         FILE *fptr;
         int file;
+        if ( argv[1] == NULL){
+		        printf("No Argument :^(\n");
+		        return 1;
+	         }
+
         if (strncmp(argv[1], "-c", strlen(argv[1])) == 0){
           semid = semget(key, 1, IPC_CREAT | 0644);
           //printf("semaphore created! %d\n", semid);
@@ -33,7 +38,7 @@ int main(int argc, char *argv[]){
           sc = semctl(semid, 0, SETVAL, su);
           //printf("value set: %d\n", sc);
           int file = open("file.txt", O_CREAT | O_TRUNC, 0644);
-          //shmdt(0);
+          shmdt(0);
           close(file);
         }
         else if (strncmp(argv[1], "-v", strlen(argv[1])) == 0){
