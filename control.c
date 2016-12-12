@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
           close(file);
         }
         else if (strncmp(argv[1], "-v", strlen(argv[1])) == 0){
-      	   int file = open("telephone.txt", O_RDONLY, 0664);
+      	   int file = open("file.txt", O_RDONLY, 0664);
            char storage[1000000];
            read(file, storage, sizeof(storage));
            printf("%s", storage);
