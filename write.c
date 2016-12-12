@@ -8,6 +8,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <unistd.h>
 
 int main(){
   int key = ftok("makefile", 22);
