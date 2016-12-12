@@ -45,7 +45,7 @@ int main(){
   //gets input and writes and closes file
   char input[1024];
   fgets(input, sizeof(input), stdin);//gets input
-  write(fd, input, sizeof(input));//writes
+  write(fd, input, strlen(input));//writes
   close(fd);
 
   //sets length of update and detach
