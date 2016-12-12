@@ -29,7 +29,7 @@ int main(){
   int fd = open("file.txt", O_RDWR | O_APPEND);//open story file
 
   if(*shmt > 0 ) {//add story
-    char * buff;//buffer
+    char * buff = (char*) malloc( *shmt + 1 );//buffer
 
     //gets # of bytes the current position is from the beginning of the file
     lseek(fd, -(*shmt), SEEK_END );//from end
@@ -39,6 +39,7 @@ int main(){
 
     printf("Last update: %s\n", buff );
     printf("Add yours here: " );
+    free(buff);//release memory
   }
   else
     printf("Create your story: ");
