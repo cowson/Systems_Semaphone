@@ -16,8 +16,6 @@ union semun{
   struct seminfo  *__buf;
 };
 
-
-
 int main(int argc, char *argv[]){
         int semid;
         int key = ftok("makefile" , 22);

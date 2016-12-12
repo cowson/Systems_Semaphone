@@ -9,10 +9,10 @@
 
 int main(){
   //Create/get access to a semaphore.
-  int semid = semget(ftok("makefile", 1), 1, IPC_CREAT | 0644);
+  int semid = semget(ftok("makefile", 22), 1, IPC_CREAT | 0644);
 
   //Create or access a shared memory segment.
-  int shmid = shmget( ftok("makefile", 2), 4, IPC_CREAT | 0644 );
+  int shmid = shmget( ftok("makefile", 22), 4, IPC_CREAT | 0644 );
 
   struct sembuf sb;
   sb.sem_num = 0;
