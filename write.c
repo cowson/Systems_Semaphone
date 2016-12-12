@@ -18,8 +18,6 @@ int main(){
   //Create or access a shared memory segment.
   int shmid = shmget( key, 4, 0 );
 
-  printf( "%s\n", strerror(errno));
-
   struct sembuf sb;
   sb.sem_num = 0;
   sb.sem_flg = SEM_UNDO;
